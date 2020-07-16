@@ -99,10 +99,10 @@ open class LocationAnnotationNode: LocationNode {
         var scale: Float
 
         if scaleRelativeToDistance {
-            scale = appliedScale.y
-            annotationNode.scale = appliedScale
+            scale = appliedScale.y * 10
+            annotationNode.scale = SCNVector3(appliedScale.x * 10, appliedScale.y * 10, appliedScale.z * 10)
             annotationNode.childNodes.forEach { child in
-                child.scale = appliedScale
+                child.scale = SCNVector3(appliedScale.x * 10, appliedScale.y * 10, appliedScale.z * 10)
             }
         } else {
             let scaleFunc = scalingScheme.getScheme()
